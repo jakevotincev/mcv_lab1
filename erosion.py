@@ -47,13 +47,13 @@ def main():
           grayframe = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
           ret, grayframe = cv2.threshold(grayframe, 127, 255, cv2.THRESH_BINARY)
 
-          kernel = np.ones((12,12), np.uint8)
+          kernel = np.full((6, 6), fill_value=255)
 
-          # cv2_ero = cv2.erode(grayframe, kernel, iterations=1)
-          my_ero = erode(grayframe)
+          cv2_ero = cv2.erode(grayframe, kernel, iterations=1)
+          # my_ero = erode(grayframe)
 
-          # cv2.imshow('CV2_ERO', cv2_ero)
-          cv2.imshow('MY_ERO', my_ero)
+          cv2.imshow('CV2_ERO', cv2_ero)
+          # cv2.imshow('MY_ERO', my_ero)
 
           # This also acts as
           keyCode = cv2.waitKey(1) & 0xFF
